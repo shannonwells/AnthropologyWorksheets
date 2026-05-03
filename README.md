@@ -5,7 +5,7 @@ A collection of worksheets and resources to make measuring and recording primate
 This project was born out of frustration from attempting to complete exercises entirely online, where information on how to perform many of these measurements is scattered and difficult to find.
 
 ## Contributing
-It is hoped that students or educators will submit issues, even pull requests, or else fork this project to meet their needs. Issues and pull requests submitted in earnest are welcome.  Please see CONTRIBUTING.md for more information.
+It is hoped that students or educators will submit issues, even pull requests, or else fork this project to meet their needs. Issues and pull requests submitted in earnest are welcome.  Please see [CONTRIBUTING.md](https://github.com/shannonwells/AnthropologyWorksheets/blob/main/CONTRIBUTING.md) for more information.
 
 ## License
 This project is licensed under the GPL v3.0.  Please see [LICENSE](https://github.com/shannonwells/AnthropologyWorksheets/blob/main/LICENSE) for more information.
