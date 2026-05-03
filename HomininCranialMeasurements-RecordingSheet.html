@@ -4,14 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hominin Cranial Measurements</title>
-<link rel="stylesheet" href="styles/measurements-recording-sheet.css"
+<link rel="stylesheet" href="styles/measurements-recording-sheet.css" />
 </head>
 <body>
 
 <h1>Hominin Cranial Measurements Recording Sheet</h1>
 <h2>Compare three specimens across eight cranial and dental variables</h2>
+<p>To save your results, print to PDF.</p>
 <h3>Definitions</h3>
 <div class="definitions">
+  <p>For angular measurements, try a protractor browser extension. Search for "protractor":
+    <ul class="list">
+      <li>on the <a href="https://chromewebstore.google.com/search/protractor">Chrome web store</a>, or </li>
+      <li>on the <a href="https://apps.apple.com/us/iphone/search?term=protractor">iPhone store</a></li>   </ul>
+  </p>
+  <p>For screen measurements, you can try a ruler extension, however, these generally measure in pixels, and only exactly horizontal and vertical lines.</p>
   <p>
     See also: <a href="CranialReferencePointsAndPlanes.html">Cranial Reference Points and Planes</a>, <a href="https://humanbiomedia.org/">Human BioMedia</a>, and <a href="https://carta.anthropogeny.org/moca/domains/anatomy-and-biomechanics>">Anatomy and Biomechanics (CARTA)</a>
   </p>
@@ -294,7 +301,7 @@
         if (b === 0) {
           resultValue.textContent = 'Error (div by 0)';
         } else {
-          const result = a / b;
+          const result = 100 * a / b;
           // Format result: if it has many decimals, limit to 2 or 3
           resultValue.textContent = Number.isInteger(result) ? result : result.toFixed(3);
         }

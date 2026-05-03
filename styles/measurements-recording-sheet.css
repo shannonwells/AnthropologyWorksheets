@@ -237,6 +237,10 @@ textarea.textarea-cell {
     font-style: italic;
 }
 
+.list {
+    padding: 2px 22px;
+}
+
 @media print {
     body { padding: 0; }
     h1 { font-size: 14px; }
