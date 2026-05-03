@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hominin Evolution & Tool Industries Timeline</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Source Sans 3', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+    border-bottom: 1px solid #30363d;
+    padding: 28px 40px 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #f0e6c8;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  header p {
+    color: #8b949e;
+    font-size: 0.88rem;
+    font-weight: 300;
+  }
+
+  .chart-container {
+    padding: 30px 20px 20px;
+    overflow-x: auto;
+  }
+
+  svg {
+    display: block;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  /* Legend */
+  .legend-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px 40px 24px;
+    border-top: 1px solid #21262d;
+    margin-top: 8px;
+  }
+
+  .legend-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legend-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  .legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #c9d1d9;
+  }
+
+  .legend-bar {
+    width: 28px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .legend-stripe {
+    width: 28px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 3px,
+      rgba(255,255,255,0.25) 3px,
+      rgba(255,255,255,0.25) 6px
+    );
+  }
+
+  .tooltip {
+    position: fixed;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    color: #c9d1d9;
+    pointer-events: none;
+    z-index: 1000;
+    max-width: 280px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    line-height: 1.6;
+    display: none;
+  }
+
+  .tooltip strong {
+    display: block;
+    color: #f0e6c8;
+    font-family: 'Merriweather', serif;
+    font-size: 0.88rem;
+    margin-bottom: 4px;
+  }
+
+  .tooltip .tip-range {
+    color: #8b949e;
+    font-size: 0.76rem;
+    margin-bottom: 6px;
+  }
+
+  .tooltip .tip-note {
+    font-size: 0.78rem;
+    color: #c9d1d9;
+    border-top: 1px solid #30363d;
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 16px;
+    color: #484f58;
+    font-size: 0.75rem;
+    border-top: 1px solid #21262d;
+  }
+
+  .note-box {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-left: 3px solid #c9a84c;
+    border-radius: 6px;
+    margin: 0 40px 20px;
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    color: #8b949e;
+    line-height: 1.6;
+  }
+  .note-box strong { color: #c9a84c; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hominin Evolution &amp; Lithic Tool Industries</h1>
+  <p>Temporal ranges of selected hominin taxa and associated tool industries (Mya = Million years ago)</p>
+</header>
+
+<div class="chart-container">
+<svg id="chart" width="900" height="620" viewBox="0 0 900 620"></svg>
+</div>
+
+<div class="note-box">
+  <strong>Note on Tool Attribution:</strong> Tool industry associations shown represent possible/probable use based on archaeological context and temporal overlap. Attribution of the Lomekwian to <em>Australopithecus</em> remains debated. Paranthropus taxa have been proposed as Oldowan makers by some researchers. Striped overlays indicate contested or uncertain attribution.
+</div>
+
+<div class="legend-section">
+  <div class="legend-group">
+    <div class="legend-title">Genus</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="legend-bar" style="background:#7eb8c9;"></div>
+        <span><em>Australopithecus</em></span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-bar" style="background:#c97e7e;"></div>
+        <span><em>Paranthropus</em></span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-bar" style="background:#8dc97e;"></div>
+        <span><em>Homo</em></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend-group">
+    <div class="legend-title">Tool Industries</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="legend-bar" style="background:rgba(180,140,60,0.55); border:1px solid rgba(200,170,80,0.7);"></div>
+        <span>Lomekwian (~3.3 Mya)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-bar" style="background:rgba(160,100,60,0.55); border:1px solid rgba(200,140,80,0.7);"></div>
+        <span>Oldowan (~2.6–1.7 Mya)</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-bar" style="background:rgba(100,80,160,0.55); border:1px solid rgba(140,110,200,0.7);"></div>
+        <span>Acheulean (~1.76–0.3 Mya)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend-group">
+    <div class="legend-title">Attribution</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="legend-bar" style="background:#555; opacity:0.9;"></div>
+        <span>Confirmed / probable</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-stripe" style="background-color:#555;"></div>
+        <span>Contested / uncertain</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<footer>
+  Sources: Leakey et al. (2001), Harmand et al. (2015), Semaw et al. (1997), Lepre et al. (2011) | Hover over bars for details
+</footer>
+
+<script>
+const svg = document.getElementById('chart');
+const NS = 'http://www.w3.org/2000/svg';
+
+function el(tag, attrs={}, text='') {
+  const e = document.createElementNS(NS, tag);
+  for (const [k,v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (text) e.textContent = text;
+  return e;
+}
+
+// ── Layout ──────────────────────────────────────────────
+const W = 900, H = 620;
+const marginLeft = 220, marginRight = 40, marginTop = 50, marginBottom = 60;
+const chartW = W - marginLeft - marginRight;
+const chartH = H - marginTop - marginBottom;
+
+// ── Time scale: 3.5 Mya → 0.1 Mya ──────────────────────
+const timeMin = 0.1, timeMax = 3.5; // Mya
+function xScale(mya) {
+  return marginLeft + ((timeMax - mya) / (timeMax - timeMin)) * chartW;
+}
+
+// ── Data ────────────────────────────────────────────────
+const taxa = [
+  {
+    name: 'Au. anamensis',
+    fullName: 'Australopithecus anamensis',
+    start: 4.2, end: 3.8,
+    genus: 'Australopithecus',
+    color: '#7eb8c9',
+    darkColor: '#5a9db5',
+    note: 'Earliest known Australopithecus. Found in Kenya and Ethiopia. Bipedal but retains many primitive features. No direct tool association, pre-dates Lomekwian.',
+    tools: []
+  },
+  {
+    name: 'Au. afarensis',
+    fullName: 'Australopithecus afarensis',
+    start: 3.85, end: 2.95,
+    genus: 'Australopithecus',
+    color: '#7eb8c9',
+    darkColor: '#5a9db5',
+    note: 'Famous species including "Lucy" (AL 288-1). Strong bipedal walker, small brain (~430 cc). Temporal overlap with Lomekwian tools at ~3.3 Mya — possible maker debated.',
+    tools: ['lomekwian_uncertain']
+  },
+  {
+    name: 'Au. africanus',
+    fullName: 'Australopithecus africanus',
+    start: 3.3, end: 2.1,
+    genus: 'Australopithecus',
+    color: '#7eb8c9',
+    darkColor: '#5a9db5',
+    note: 'First fossil hominin discovered in South Africa ("Taung Child"). Brain ~430–500 cc. Overlaps with early Oldowan period. No confirmed tool use but possible opportunistic use.',
+    tools: ['oldowan_uncertain']
+  },
+  {
+    name: 'P. aethiopicus',
+    fullName: 'Paranthropus aethiopicus',
+    start: 2.7, end: 2.3,
+    genus: 'Paranthropus',
+    color: '#c97e7e',
+    darkColor: '#b55a5a',
+    note: 'Early robust australopith. Massive sagittal crest and large molars for tough vegetation. Some researchers propose Paranthropus made Oldowan tools, but evidence is circumstantial.',
+    tools: ['oldowan_uncertain']
+  },
+  {
+    name: 'P. boisei',
+    fullName: 'Paranthropus boisei',
+    start: 2.3, end: 1.2,
+    genus: 'Paranthropus',
+    color: '#c97e7e',
+    darkColor: '#b55a5a',
+    note: '"Nutcracker Man." Massive jaws and molars, small brain. Found alongside Oldowan tools at Olduvai Gorge, but H. habilis is generally credited as the maker. Tool use highly debated.',
+    tools: ['oldowan_uncertain']
+  },
+  {
+    name: 'P. robustus',
+    fullName: 'Paranthropus robustus',
+    start: 1.8, end: 1.2,
+    genus: 'Paranthropus',
+    color: '#c97e7e',
+    darkColor: '#b55a5a',
+    note: 'South African robust australopith. Some bone tools (digging sticks) have been tentatively associated. Concurrent with H. habilis and early H. erectus.',
+    tools: ['oldowan_uncertain']
+  },
+  {
+    name: 'H. habilis',
+    fullName: 'Homo habilis',
+    start: 2.4, end: 1.65,
+    genus: 'Homo',
+    color: '#8dc97e',
+    darkColor: '#6ab55a',
+    note: '"Handy Man." Brain ~510–680 cc. Broadly accepted as primary maker of Oldowan tools. Name literally means "handy/skilled person." Found at Olduvai Gorge, Tanzania.',
+    tools: ['oldowan_confirmed']
+  },
+  {
+    name: 'H. erectus',
+    fullName: 'Homo erectus',
+    start: 1.89, end: 0.11,
+    genus: 'Homo',
+    color: '#8dc97e',
+    darkColor: '#6ab55a',
+    note: 'First hominin to leave Africa. Brain ~600–1100 cc. Primary maker of Acheulean handaxes. Also used late Oldowan tools. Survived until ~110,000 years ago in some regions.',
+    tools: ['oldowan_confirmed', 'acheulean_confirmed']
+  },
+];
+
+// Clip to chart range for rendering
+taxa.forEach(t => {
+  t.renderStart = Math.min(t.start, timeMax);
+  t.renderEnd = Math.max(t.end, timeMin);
+});
+
+// Tool industries
+const industries = [
+  {
+    id: 'lomekwian',
+    name: 'Lomekwian',
+    start: 3.3, end: 3.2,
+    color: 'rgba(180,140,60,0.45)',
+    stroke: 'rgba(220,185,90,0.85)',
+    label: 'Lomekwian\n~3.3 Mya'
+  },
+  {
+    id: 'oldowan',
+    name: 'Oldowan',
+    start: 2.6, end: 1.65,
+    color: 'rgba(160,100,60,0.42)',
+    stroke: 'rgba(210,145,90,0.85)',
+    label: 'Oldowan\n~2.6–1.65 Mya'
+  },
+  {
+    id: 'acheulean',
+    name: 'Acheulean',
+    start: 1.76, end: 0.3,
+    color: 'rgba(100,80,160,0.42)',
+    stroke: 'rgba(145,120,210,0.85)',
+    label: 'Acheulean\n~1.76–0.3 Mya'
+  }
+];
+
+// ── Row layout ──────────────────────────────────────────
+const rowH = 40;
+const rowPad = 8;
+const totalRows = taxa.length;
+const taxaAreaH = totalRows * (rowH + rowPad);
+const toolY0 = marginTop + taxaAreaH + 30;
+const toolRowH = 34;
+
+// ── Draw background ─────────────────────────────────────
+const bg = el('rect', {x:0, y:0, width:W, height:H, fill:'#0d1117'});
+svg.appendChild(bg);
+
+// ── Grid & time axis ─────────────────────────────────────
+const gridTimes = [3.5, 3.0, 2.5, 2.0, 1.5, 1.0, 0.5, 0.1];
+
+// Alternating background bands
+for (let i = 0; i < gridTimes.length - 1; i++) {
+  if (i % 2 === 0) {
+    const x1 = xScale(gridTimes[i]);
+    const x2 = xScale(gridTimes[i+1]);
+    const band = el('rect', {
+      x: Math.min(x1,x2), y: marginTop,
+      width: Math.abs(x2-x1),
+      height: H - marginTop - marginBottom + 20,
+      fill: 'rgba(255,255,255,0.018)'
+    });
+    svg.appendChild(band);
+  }
+}
+
+// Vertical grid lines
+gridTimes.forEach(t => {
+  const x = xScale(t);
+  const line = el('line', {
+    x1: x, y1: marginTop, x2: x, y2: H - marginBottom + 20,
+    stroke: '#21262d', 'stroke-width': 1
+  });
+  svg.appendChild(line);
+
+  // Label
+  const label = el('text', {
+    x: x, y: H - marginBottom + 35,
+    'text-anchor': 'middle',
+    fill: '#8b949e',
+    'font-size': '11',
+    'font-family': 'Source Sans 3, sans-serif'
+  }, t === 0.1 ? '0.1' : t.toFixed(1));
+  svg.appendChild(label);
+});
+
+// Axis label
+const axisLabel = el('text', {
+  x: marginLeft + chartW/2, y: H - 8,
+  'text-anchor': 'middle', fill: '#6e7681',
+  'font-size': '11', 'font-family': 'Source Sans 3, sans-serif'
+}, '← Millions of Years Ago (Mya) →  [right = more recent]');
+svg.appendChild(axisLabel);
+
+// ── Section labels ───────────────────────────────────────
+const secY = marginTop - 14;
+
+// Genus group headers
+function drawGroupHeader(label, y, color) {
+  const t = el('text', {
+    x: marginLeft - 14, y,
+    'text-anchor': 'end', fill: color,
+    'font-size': '9.5', 'font-weight': '700',
+    'font-family': 'Source Sans 3, sans-serif',
+    'letter-spacing': '0.8'
+  }, label.toUpperCase());
+  svg.appendChild(t);
+}
+
+// ── Draw tool industry bands (background) ────────────────
+const toolTotalH = industries.length * (toolRowH + 6);
+
+// Tool section header
+const toolHeader = el('text', {
+  x: marginLeft - 14, y: toolY0 + 14,
+  'text-anchor': 'end', fill: '#8b949e',
+  'font-size': '10', 'font-weight': '700',
+  'font-family': 'Source Sans 3, sans-serif',
+  'letter-spacing': '0.8'
+}, 'TOOL INDUSTRIES');
+svg.appendChild(toolHeader);
+
+// Separator line
+const sep = el('line', {
+  x1: marginLeft, y1: toolY0 - 4,
+  x2: marginLeft + chartW, y2: toolY0 - 4,
+  stroke: '#30363d', 'stroke-width': 1, 'stroke-dasharray': '4,3'
+});
+svg.appendChild(sep);
+
+industries.forEach((ind, i) => {
+  const ty = toolY0 + i * (toolRowH + 8);
+  const x1 = xScale(Math.min(ind.start, timeMax));
+  const x2 = xScale(Math.max(ind.end, timeMin));
+  const bx = Math.min(x1, x2);
+  const bw = Math.abs(x2 - x1);
+
+  // Background rect
+  const bgRect = el('rect', {
+    x: marginLeft, y: ty, width: chartW, height: toolRowH,
+    fill: 'rgba(255,255,255,0.02)', rx: 3
+  });
+  svg.appendChild(bgRect);
+
+  // Tool bar
+  const bar = el('rect', {
+    x: bx, y: ty + 4, width: bw, height: toolRowH - 8,
+    fill: ind.color, stroke: ind.stroke, 'stroke-width': 1.2,
+    rx: 4,
+    style: 'cursor:pointer',
+    'data-ind': ind.id
+  });
+  svg.appendChild(bar);
+
+  // Industry name label
+  const names = {lomekwian: 'Lomekwian', oldowan: 'Oldowan', acheulean: 'Acheulean'};
+  const ranges = {
+    lomekwian: '~3.3 – 3.2 Mya',
+    oldowan: '~2.6 – 1.65 Mya',
+    acheulean: '~1.76 – 0.3 Mya'
+  };
+  const labelX = marginLeft - 14;
+  const tl = el('text', {
+    x: labelX, y: ty + toolRowH/2 + 4,
+    'text-anchor': 'end',
+    fill: '#c9d1d9', 'font-size': '11.5',
+    'font-family': 'Source Sans 3, sans-serif',
+    'font-style': 'italic'
+  }, names[ind.id]);
+  svg.appendChild(tl);
+
+  // Range annotation inside bar if wide enough
+  if (bw > 60) {
+    const midX = bx + bw / 2;
+    const rangeLbl = el('text', {
+      x: midX, y: ty + toolRowH/2 + 4,
+      'text-anchor': 'middle',
+      fill: 'rgba(255,255,255,0.75)',
+      'font-size': '9.5',
+      'font-family': 'Source Sans 3, sans-serif',
+      'pointer-events': 'none'
+    }, ranges[ind.id]);
+    svg.appendChild(rangeLbl);
+  }
+
+  // Hover tooltip
+  bar.addEventListener('mouseenter', (e) => {
+    const tip = document.getElementById('tooltip');
+    const tipData = {
+      lomekwian: {
+        name: 'Lomekwian Industry',
+        range: '~3.3 – 3.2 Mya',
+        desc: 'Oldest known stone tool industry, discovered at Lomekwi 3, West Turkana, Kenya (Harmand et al. 2015). Predates Homo by ~700,000 years. Associated with a hominin-occupied landscape, possibly Kenyanthropus platyops or late Australopithecus. Tools include large cores and flakes.'
+      },
+      oldowan: {
+        name: 'Oldowan Industry',
+        range: '~2.6 – 1.65 Mya (transitional use to ~1.0 Mya)',
+        desc: 'Named after Olduvai Gorge, Tanzania. Characterized by simple flaked pebble choppers and flakes. Earliest confirmed examples ~2.6 Mya (Gona, Ethiopia). Primarily attributed to H. habilis; also possibly made by Paranthropus. Broadly succeeded by Acheulean.'
+      },
+      acheulean: {
+        name: 'Acheulean Industry',
+        range: '~1.76 – 0.3 Mya',
+        desc: 'Named after Saint-Acheul, France. Defined by large bifacially worked handaxes and cleavers. Associated almost entirely with H. erectus (and later archaic H. sapiens). First appeared in Africa; spread across Eurasia. Persisted for over 1.4 million years.'
+      }
+    };
+    const d = tipData[ind.id];
+    tip.innerHTML = `<strong>${d.name}</strong><span class="tip-range">${d.range}</span>${d.desc}`;
+    tip.style.display = 'block';
+    moveTip(e);
+  });
+  bar.addEventListener('mousemove', moveTip);
+  bar.addEventListener('mouseleave', () => {
+    document.getElementById('tooltip').style.display = 'none';
+  });
+});
+
+// ── Draw species bars ─────────────────────────────────────
+let lastGenus = '';
+const genusColors = {
+  Australopithecus: '#7eb8c9',
+  Paranthropus: '#c97e7e',
+  Homo: '#8dc97e'
+};
+
+// Defs for stripe pattern
+const defs = el('defs', {});
+['Au','Pa','Ho'].forEach((prefix, gi) => {
+  const colors = ['#7eb8c9','#c97e7e','#8dc97e'];
+  const pat = el('pattern', {
+    id: `stripe_${prefix}`, patternUnits: 'userSpaceOnUse',
+    width: 8, height: 8,
+    patternTransform: 'rotate(45)'
+  });
+  const r1 = el('rect', {width:8, height:8, fill: colors[gi], 'fill-opacity':'0.55'});
+  const r2 = el('rect', {y:0, width:8, height:4, fill:'rgba(255,255,255,0.18)'});
+  pat.appendChild(r1); pat.appendChild(r2);
+  defs.appendChild(pat);
+});
+svg.appendChild(defs);
+
+const stripeMap = { Australopithecus: 'url(#stripe_Au)', Paranthropus: 'url(#stripe_Pa)', Homo: 'url(#stripe_Ho)' };
+
+taxa.forEach((taxon, i) => {
+  const ty = marginTop + i * (rowH + rowPad);
+  const x1 = xScale(taxon.renderStart);
+  const x2 = xScale(taxon.renderEnd);
+  const bx = Math.min(x1, x2);
+  const bw = Math.abs(x2 - x1);
+  const barH = rowH - 6;
+  const barY = ty + 3;
+
+  // Row background
+  const rowBg = el('rect', {
+    x: marginLeft, y: ty, width: chartW, height: rowH,
+    fill: i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'rgba(0,0,0,0.1)',
+    rx: 2
+  });
+  svg.appendChild(rowBg);
+
+  // Genus divider
+  if (taxon.genus !== lastGenus) {
+    lastGenus = taxon.genus;
+    if (i > 0) {
+      const dl = el('line', {
+        x1: 0, y1: ty - rowPad/2,
+        x2: W, y2: ty - rowPad/2,
+        stroke: '#30363d', 'stroke-width': 0.5
+      });
+      svg.appendChild(dl);
+    }
+  }
+
+  // Main species bar (solid)
+  const bar = el('rect', {
+    x: bx, y: barY, width: bw, height: barH,
+    fill: taxon.color, 'fill-opacity': '0.75',
+    stroke: taxon.darkColor, 'stroke-width': '1.2',
+    rx: 5,
+    style: 'cursor:pointer'
+  });
+  svg.appendChild(bar);
+
+  // Tool association overlays
+  taxon.tools.forEach(toolRef => {
+    const [toolId, certainty] = toolRef.split('_');
+    const toolInds = {
+      lomekwian: {start: 3.3, end: 3.2},
+      oldowan:   {start: 2.6, end: 1.65},
+      acheulean: {start: 1.76, end: 0.3}
+    };
+    const tool = toolInds[toolId];
+    if (!tool) return;
+
+    // Overlap between taxon and tool
+    const overlapStart = Math.min(taxon.renderStart, tool.start);
+    const overlapEnd = Math.max(taxon.renderEnd, tool.end);
+
+    // Only draw if there is actual temporal overlap
+    const overlapActualStart = Math.min(taxon.renderStart, tool.start);
+    const overlapActualEnd   = Math.max(taxon.renderEnd,   tool.end);
+
+    // Real overlap: taxon range AND tool range
+    const realStart = Math.min(taxon.renderStart, Math.min(tool.start, timeMax));
+    const realEnd   = Math.max(taxon.renderEnd,   Math.max(tool.end, timeMin));
+
+    // Intersect taxon [renderEnd, renderStart] with tool [end, start]
+    const iStart = Math.min(taxon.renderStart, tool.start);
+    const iEnd   = Math.max(taxon.renderEnd,   tool.end);
+
+    // Correct intersection:
+    const intStart = Math.min(taxon.renderStart, tool.start); // earlier = larger mya
+    const intEnd   = Math.max(taxon.renderEnd,   tool.end);   // later = smaller mya
+
+    // Taxa go from renderStart (older) to renderEnd (newer)
+    // Tool goes from start (older) to end (newer)
+    // Intersection: max of starts (smaller mya = more recent) ... no, think in Mya:
+    // overlap in Mya: from max(taxon.renderEnd, tool.end) to min(taxon.renderStart, tool.start)
+    const oStart_mya = Math.min(taxon.renderStart, tool.start); // older
+    const oEnd_mya   = Math.max(taxon.renderEnd,   tool.end);   // newer
+
+    // Check if they actually overlap
+    if (oStart_mya <= oEnd_mya) return; // no overlap (in Mya coords older > newer)
+
+    const ox1 = xScale(oStart_mya);
+    const ox2 = xScale(oEnd_mya);
+    const obx = Math.min(ox1, ox2);
+    const obw = Math.abs(ox2 - ox1);
+
+    const isUncertain = certainty === 'uncertain';
+
+    if (isUncertain) {
+      // Striped overlay
+      const overlay = el('rect', {
+        x: obx, y: barY + 2, width: obw, height: barH - 4,
+        fill: stripeMap[taxon.genus],
+        rx: 4, 'pointer-events': 'none', opacity: '0.7'
+      });
+      svg.appendChild(overlay);
+    } else {
+      // Solid brighter overlay indicating confirmed association
+      const overlay = el('rect', {
+        x: obx, y: barY + 2, width: obw, height: barH - 4,
+        fill: 'rgba(255,255,255,0.2)',
+        rx: 4, 'pointer-events': 'none'
+      });
+      svg.appendChild(overlay);
+    }
+  });
+
+  // Taxon label (left)
+  const isItalicGenus = true;
+  const shortName = taxon.name; // e.g. "Au. afarensis"
+  const parts = shortName.split(' ');
+
+  const labelX = marginLeft - 14;
+  const labelY = barY + barH/2 + 4;
+
+  if (parts.length === 2) {
+    // Abbrev genus + species — render as combined italic text
+    const tLabel = el('text', {
+      x: labelX, y: labelY,
+      'text-anchor': 'end',
+      fill: taxon.color,
+      'font-size': '12',
+      'font-family': 'Source Sans 3, sans-serif',
+      'font-style': 'italic',
+      'font-weight': '400'
+    }, parts[0] + ' ');
+    svg.appendChild(tLabel);
+
+    // Get width of first part for positioning
+    // Just use combined label instead
+    tLabel.textContent = shortName;
+  } else {
+    const tLabel = el('text', {
+      x: labelX, y: labelY,
+      'text-anchor': 'end',
+      fill: taxon.color,
+      'font-size': '12',
+      'font-family': 'Source Sans 3, sans-serif',
+      'font-style': 'italic'
+    }, shortName);
+    svg.appendChild(tLabel);
+  }
+
+  // Time range annotation inside bar
+  const rangeText = `${taxon.start}–${taxon.end} Mya`;
+  if (bw > 50) {
+    const midX = bx + bw / 2;
+    const rt = el('text', {
+      x: midX, y: barY + barH/2 + 4,
+      'text-anchor': 'middle',
+      fill: 'rgba(10,10,10,0.65)',
+      'font-size': '9',
+      'font-family': 'Source Sans 3, sans-serif',
+      'pointer-events': 'none',
+      'font-weight': '600'
+    }, rangeText);
+    svg.appendChild(rt);
+  }
+
+  // Hover interaction
+  bar.addEventListener('mouseenter', (e) => {
+    const tip = document.getElementById('tooltip');
+    const toolNames = {
+      lomekwian_uncertain: '⚠️ Lomekwian (contested)',
+      lomekwian_confirmed: '✅ Lomekwian',
+      oldowan_uncertain: '⚠️ Oldowan (debated)',
+      oldowan_confirmed: '✅ Oldowan',
+      acheulean_uncertain: '⚠️ Acheulean (debated)',
+      acheulean_confirmed: '✅ Acheulean'
+    };
+    const toolList = taxon.tools.length
+      ? taxon.tools.map(t => toolNames[t] || t).join('<br>')
+      : 'No definitive tool association';
+
+    tip.innerHTML = `
+      <strong><em>${taxon.fullName}</em></strong>
+      <span class="tip-range">${taxon.start} – ${taxon.end} Mya · Genus: ${taxon.genus}</span>
+      ${taxon.note}
+      <div class="tip-note"><strong>Tool associations:</strong><br>${toolList}</div>
+    `;
+    tip.style.display = 'block';
+    moveTip(e);
+    bar.setAttribute('stroke-width', '2.5');
+  });
+  bar.addEventListener('mousemove', moveTip);
+  bar.addEventListener('mouseleave', () => {
+    document.getElementById('tooltip').style.display = 'none';
+    bar.setAttribute('stroke-width', '1.2');
+  });
+});
+
+// ── "Present" direction arrow ─────────────────────────────
+const arrY = H - marginBottom + 22;
+const arrowLine = el('line', {
+  x1: xScale(0.2), y1: arrY,
+  x2: xScale(0.1) - 2, y2: arrY,
+  stroke: '#484f58', 'stroke-width': 1,
+  'marker-end': 'url(#arrowhead)'
+});
+const arrowMarker = el('marker', {
+  id: 'arrowhead', markerWidth: 6, markerHeight: 6,
+  refX: 3, refY: 3, orient: 'auto'
+});
+const arrowPath = el('path', {d: 'M0,0 L6,3 L0,6 Z', fill: '#484f58'});
+arrowMarker.appendChild(arrowPath);
+defs.appendChild(arrowMarker);
+
+// ── Chart title annotations ──────────────────────────────
+const chartTitle = el('text', {
+  x: marginLeft + chartW/2, y: marginTop - 18,
+  'text-anchor': 'middle', fill: '#8b949e',
+  'font-size': '10.5', 'font-family': 'Source Sans 3, sans-serif',
+  'letter-spacing': '0.5'
+}, '← OLDER                                                                                                    MORE RECENT →');
+svg.appendChild(chartTitle);
+
+// ── Genus bracket lines on left ──────────────────────────
+const genusBrackets = [
+  { genus: 'Australopithecus', rows: [0,1,2], color: '#7eb8c9' },
+  { genus: 'Paranthropus',     rows: [3,4,5], color: '#c97e7e' },
+  { genus: 'Homo',             rows: [6,7],   color: '#8dc97e' }
+];
+
+genusBrackets.forEach(gb => {
+  const y1 = marginTop + gb.rows[0] * (rowH + rowPad);
+  const y2 = marginTop + gb.rows[gb.rows.length-1] * (rowH + rowPad) + rowH;
+  const bx = 10;
+
+  // Vertical line
+  svg.appendChild(el('line', {
+    x1: bx, y1: y1 + 4, x2: bx, y2: y2 - 4,
+    stroke: gb.color, 'stroke-width': 2.5,
+    'stroke-opacity': '0.6'
+  }));
+  // Top tick
+  svg.appendChild(el('line', {x1:bx, y1:y1+4, x2:bx+5, y2:y1+4, stroke:gb.color, 'stroke-width':1.5, 'stroke-opacity':'0.6'}));
+  // Bottom tick
+  svg.appendChild(el('line', {x1:bx, y1:y2-4, x2:bx+5, y2:y2-4, stroke:gb.color, 'stroke-width':1.5, 'stroke-opacity':'0.6'}));
+
+  // Genus label (rotated)
+  const midY = (y1 + y2) / 2;
+  const gt = el('text', {
+    x: bx - 8, y: midY,
+    'text-anchor': 'middle',
+    fill: gb.color, 'fill-opacity': '0.8',
+    'font-size': '9.5',
+    'font-style': 'italic',
+    'font-family': 'Source Sans 3, sans-serif',
+    'font-weight': '600',
+    transform: `rotate(-90, ${bx-8}, ${midY})`
+  }, gb.genus);
+  svg.appendChild(gt);
+});
+
+// ── Tooltip move helper ───────────────────────────────────
+function moveTip(e) {
+  const tip = document.getElementById('tooltip');
+  let tx = e.clientX + 16;
+  let ty = e.clientY + 12;
+  const tw = 280, th = 160;
+  if (tx + tw > window.innerWidth) tx = e.clientX - tw - 12;
+  if (ty + th > window.innerHeight) ty = e.clientY - th - 12;
+  tip.style.left = tx + 'px';
+  tip.style.top  = ty + 'px';
+}
+</script>
+</body>
+</html>
