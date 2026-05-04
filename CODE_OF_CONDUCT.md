@@ -40,7 +40,7 @@ When an incident does occur, generally try to resolve it among yourselves; if yo
 
 As this repository's only admin, I don't have time or patience to go through any kind of "consequence" ladder. Violations of this Code of Conduct are based on my personal, culturally-biased, subjective judgment; I will ban you if I think what you are posting is excessively in violation.  Otherwise, I'll ask you to 1) apologize and 2) clarify if there was just a misunderstanding, and if you don't do those things you will be blocked. So you can either respond politely to someone's complaint about your behavior and clear it up before I see it, or you can _not_ do that, and risk being banned.
 
-Conversely, if a contributor displays a pattern of interpreting comments as personal or bigoted attacks, I may ban them. It is outside the bounds of this repository for contributors to perform psychoanalysis or political activism.
+Conversely, if a contributor displays a pattern of interpreting comments as personal or bigoted attacks (such as, any time someone disagrees, regardless of how they do so), I may ban them. It is outside the bounds of this repository for contributors to perform psychoanalysis or political activism.
 
 ## Scope
 This Code of Conduct applies within all areas of contribution in this repository. 
