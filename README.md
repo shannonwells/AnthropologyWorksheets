@@ -2,7 +2,7 @@
 A collection of worksheets and resources to make measuring and recording primate skeletal measurements easier. Based on lab exercises from [Explorations: An Open Invitation to Biological Anthropology](https://explorations.americananthro.org/), these worksheets are designed to make these exercises easier for entirely online learning, especially when interacting with 3D skeletal scans.
 
 ## How to use this repo
-- visit the <a href="https://shannonwells.github.io/AnthropologyWorksheets/">GitHub page</a> to see the deployed version of the website, or,
+- visit the <a href="https://shannonwells.github.io/AnthropologyWorksheets/">website</a> to see the deployed version of the website, or,
 - download the files and open the one you want to use in your browser. 
 
 ### Contents
