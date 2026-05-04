@@ -2,7 +2,8 @@
 A collection of worksheets and resources to make measuring and recording primate skeletal measurements easier. Based on lab exercises from [Explorations: An Open Invitation to Biological Anthropology](https://explorations.americananthro.org/), these worksheets are designed to make these exercises easier for entirely online learning, especially when interacting with 3D skeletal scans.
 
 ## How to use this repo
-Currently you will need to download the files and open the one you want to use in your browser. At some point this repo will be deployed as a GitHub Pages instance, so students can point their browsers to a link and just use the content.
+- visit the <a href="https://shannonwells.github.io/AnthropologyWorksheets/">GitHub page</a> to see the deployed version of the website, or,
+- download the files and open the one you want to use in your browser. 
 
 ### Contents
 * [CranialReferencePointsAndPlanes.html](https://github.com/shannonwells/AnthropologyWorksheets/blob/main/CranialReferencePointsAndPlanes.html) describes the reference points and planes on the primate skull which are used for anthropological measurements.
